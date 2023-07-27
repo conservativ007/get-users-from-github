@@ -87,4 +87,15 @@ describe('userSlice', () => {
     const nextState = userSlice.reducer(initialState, sortUsers('down'));
     expect(nextState.users).toEqual([userTwo, user]);
   });
+
+  test('should handle sortUsers', () => {
+    const initialState = {
+      users: [user, userTwo],
+      targetUser: null,
+      sortedUsers: 'down',
+    };
+
+    const nextState = userSlice.reducer(initialState, sortUsers('up'));
+    expect(nextState.users).toEqual([user, userTwo]);
+  });
 });
